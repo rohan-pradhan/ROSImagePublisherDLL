@@ -1,0 +1,3 @@
+﻿  stdafx.cpp
+  ROS2ImagePublisher.cpp
+c:\users\unreal\documents\visual studio 2015\projects\ros2imagepublisher\ros2imagepublisher\ros2imagepublisher.h(18): fatal error C1083: Cannot open include file: 'opencv2/highgui/highgui.hpp': No such file or directory
