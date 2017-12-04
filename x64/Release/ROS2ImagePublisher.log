@@ -1,18 +1,5 @@
-﻿  stdafx.cpp
-  dllmain.cpp
-  ROS2ImagePublisher.cpp
-c:\users\unreal\documents\visual studio 2015\projects\ros2imagepublisher\ros2imagepublisher\ROS2ImagePublisher.h(43): warning C4251: 'ROSPublisher::node': class 'std::shared_ptr<rclcpp::node::Node>' needs to have dll-interface to be used by clients of class 'ROSPublisher'
-  C:\dev\ros2\install\include\rclcpp/executor.hpp(127): note: see declaration of 'std::shared_ptr<rclcpp::node::Node>'
-c:\users\unreal\documents\visual studio 2015\projects\ros2imagepublisher\ros2imagepublisher\ROS2ImagePublisher.h(44): warning C4251: 'ROSPublisher::pub': class 'std::shared_ptr<rclcpp::publisher::Publisher<sensor_msgs::msg::Image,std::allocator<void>>>' needs to have dll-interface to be used by clients of class 'ROSPublisher'
-  c:\users\unreal\documents\visual studio 2015\projects\ros2imagepublisher\ros2imagepublisher\ROS2ImagePublisher.h(44): note: see declaration of 'std::shared_ptr<rclcpp::publisher::Publisher<sensor_msgs::msg::Image,std::allocator<void>>>'
-     Creating library C:\Users\unreal\Documents\Visual Studio 2015\Projects\ROS2ImagePublisher\x64\Release\ROS2ImagePublisher.lib and object C:\Users\unreal\Documents\Visual Studio 2015\Projects\ROS2ImagePublisher\x64\Release\ROS2ImagePublisher.exp
-  Generating code
-  6 of 1830 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  ROS2ImagePublisher.vcxproj -> C:\Users\unreal\Documents\Visual Studio 2015\Projects\ROS2ImagePublisher\x64\Release\ROS2ImagePublisher.dll
-  ROS2ImagePublisher.vcxproj -> C:\Users\unreal\Documents\Visual Studio 2015\Projects\ROS2ImagePublisher\x64\Release\ROS2ImagePublisher.pdb (Full PDB)
+﻿  ROS2ImagePublisher.vcxproj -> C:\Users\unreal\Documents\Visual Studio 2015\Projects\ROS2ImagePublisher-CustomMessage\x64\Release\ROS2ImagePublisher.dll
+  ROS2ImagePublisher.vcxproj -> C:\Users\unreal\Documents\Visual Studio 2015\Projects\ROS2ImagePublisher-CustomMessage\x64\Release\ROS2ImagePublisher.pdb (Full PDB)
           1 file(s) copied.
           1 file(s) copied.
           1 file(s) copied.

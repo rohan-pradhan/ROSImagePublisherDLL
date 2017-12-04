@@ -42,7 +42,8 @@ public:
 	rmw_qos_profile_t custom_camera_qos_profile;
 	rclcpp::node::Node::SharedPtr node; 
 	std::shared_ptr<rclcpp::publisher::Publisher<sensor_msgs::msg::Image> > pub;
-	
+	//std::shared_ptr<rclcpp::publisher::Publisher<custom_msgs::msg::UnrealCameraPose> > pub;
+	//Test
 	ROSPublisher(int argc, char * argv[]);
 
 	int PublishTest();

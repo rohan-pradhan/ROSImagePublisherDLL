@@ -52,6 +52,21 @@ ROS2IMAGEPUBLISHER_API void convert_frame_to_message(
 	const cv::Mat & frame, size_t frame_id, sensor_msgs::msg::Image::SharedPtr msg)
 {
 	// copy cv information into ros message
+	//geometry_msgs::msg::Point::SharedPtr point_message;
+	//point_message->x = 20.0;
+	//point_message->y = 30.0;
+	//point_message->z = 40.0;
+
+	//geometry_msgs::msg::Quaternion::SharedPtr quaternion_message; 
+	//quaternion_message->x = 1.0;
+	//quaternion_message->y = 2.0;
+	//quaternion_message->z = 3.0;
+	//quaternion_message->w = 4.0;
+
+	//geometry_msgs::msg::Pose::SharedPtr geometry_message; 
+	//geometry_message->position = *point_message;
+	//geometry_message->orientation = *quaternion_message;
+	
 	msg->height = frame.rows;
 	msg->width = frame.cols;
 	msg->encoding = mat_type2encoding(frame.type());
@@ -60,6 +75,8 @@ ROS2IMAGEPUBLISHER_API void convert_frame_to_message(
 	msg->data.resize(size);
 	memcpy(&msg->data[0], frame.data, size);
 	msg->header.frame_id = std::to_string(frame_id);
+	//final_msg->scene_camera = *msg; 
+	//final_msg->pose = *geometry_message;
 }
 
 ROSPublisher::ROSPublisher(int argc, char * argv[])
@@ -85,7 +102,7 @@ ROSPublisher::ROSPublisher(int argc, char * argv[])
 	freq = 30.0;
 	reliability_policy = RMW_QOS_POLICY_RELIABILITY_RELIABLE;
 	history_policy = RMW_QOS_POLICY_HISTORY_KEEP_ALL;
-	std::string topic("image");
+	std::string topic("camera/image_raw");
 	setvbuf(stdout, NULL, _IONBF, BUFSIZ);
 
 	node = rclcpp::node::Node::make_shared("cam2image");
@@ -100,7 +117,8 @@ ROSPublisher::ROSPublisher(int argc, char * argv[])
 
 	pub = node->create_publisher<sensor_msgs::msg::Image>(
 		topic, custom_camera_qos_profile);
-	
+
+	//pub = node->create_publisher<custom_msgs::msg::UnrealCameraPose>(topic, custom_camera_qos_profile);
 	return;
 }
 
@@ -116,6 +134,7 @@ ROS2IMAGEPUBLISHER_API int ROSPublisher::PublishTest()
 
 	// Initialize a shared pointer to an Image message.
 	auto msg = std::make_shared<sensor_msgs::msg::Image>();
+	//auto final_msg = std::make_shared<custom_msgs::msg::UnrealCameraPose>();
 	msg->is_bigendian = false;
 
 	size_t i = 1;
@@ -155,6 +174,7 @@ ROS2IMAGEPUBLISHER_API int ROSPublisher::Publish(cv::Mat mat, bool show_cam)
 {
 	// Initialize a shared pointer to an Image message.
 	auto msg = std::make_shared<sensor_msgs::msg::Image>();
+	//auto final_msg = std::make_shared<custom_msgs::msg::UnrealCameraPose>();
 	msg->is_bigendian = false;
 	size_t i = 1;
 
@@ -173,6 +193,7 @@ ROS2IMAGEPUBLISHER_API int ROSPublisher::Publish(cv::Mat mat, bool show_cam)
 		// Publish the image message and increment the frame_id.
 		printf("Publishing image #%zd\n", i);
 		pub->publish(msg);
+		//pub->publish(final_msg);
 		++i;
 		return 1;
 	}
@@ -254,6 +275,7 @@ ROS2IMAGEPUBLISHER_API int test(int argc, char * argv[])
 
 	// Initialize a shared pointer to an Image message.
 	auto msg = std::make_shared<sensor_msgs::msg::Image>();
+	//auto final_msg = std::make_shared<custom_msgs::msg::UnrealCameraPose>();
 	msg->is_bigendian = false;
 
 	size_t i = 1;
@@ -298,7 +320,7 @@ ROS2IMAGEPUBLISHER_API int test(int argc, char * argv[])
 			}
 			// Publish the image message and increment the frame_id.
 			printf("Publishing image #%zd\n", i);
-			pub->publish(msg);
+			//pub->publish(msg);
 			++i;
 		}
 		// Do some work in rclcpp and wait for more to come in.
